@@ -1,1 +1,389 @@
-/* Add your CSS here */
+/* Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Source+Sans+Pro:wght@400;600;700&display=swap');
+
+/* Apply Source Sans Pro to all body text */
+body {
+  /* Use Source Sans Pro font for body content */
+  font-family: 'Source Sans Pro', sans-serif;
+  /* Remove default margin */
+  margin: 0;
+  /* Remove default padding */
+  padding: 0;
+  /* Prevent horizontal scrolling */
+  overflow-x: hidden;
+  /* Use flexbox for layout */
+  display: flex;
+  /* Stack elements vertically */
+  flex-direction: column;
+  /* Make body at least full viewport height */
+  min-height: 100vh;
+  /* Set width to viewport */
+  width: 100%;
+}
+
+/* Apply Inter font to all headings */
+h1, h2, h3, h4, h5, h6 {
+  /* Use Inter font for headings */
+  font-family: 'Inter', sans-serif;
+}
+
+/* Hero Section Styling */
+header {
+  /* Center all content in the header */
+  text-align: center;
+  /* Add padding for spacing around the content */
+  padding: 60px 20px;
+  /* Blue gradient background for visual distinction */
+  background: linear-gradient(to right, #0071C5, #000F28);
+  /* Make header take full width */
+  width: 100%;
+  /* Set box sizing to include padding */
+  box-sizing: border-box;
+  /* Remove margin */
+  margin: 0;
+  /* Remove top margin for flush alignment */
+  margin-top: 0;
+}
+
+/* Responsive hero section for smaller devices */
+@media (max-width: 768px) {
+  header {
+    /* Reduce padding on small devices */
+    padding: 40px 15px;
+  }
+}
+
+/* Style the Intel logo */
+header img {
+  /* Set a reasonable width for the logo */
+  width: 100px;
+  /* Add space below the logo */
+  margin-bottom: 30px;
+  /* Make sure the image scales properly */
+  display: block;
+  /* Center the image horizontally */
+  margin-left: auto;
+  margin-right: auto;
+  
+}
+
+/* Style the main heading */
+header h1 {
+  /* Set font size for the main title */
+  font-size: 42px;
+  /* Add space below the heading */
+  margin-bottom: 20px;
+  /* Set text color to white for visibility on blue gradient */
+  color: #ffffff;
+  /* Set line height for multi-line heading */
+  line-height: 1.2;
+  /* Make heading uppercase */
+  text-transform: uppercase;
+}
+
+/* Responsive heading for smaller devices */
+@media (max-width: 768px) {
+  header h1 {
+    /* Reduce font size on small devices */
+    font-size: 28px;
+    /* Reduce margin */
+    margin-bottom: 15px;
+  }
+}
+
+/* Style the divider between heading and description */
+header hr {
+  /* Set the color of the divider */
+  border-color: #00C7FD;
+  /* Make the divider bold with 5px border */
+  border-top: 5px solid #00C7FD;
+  /* Remove left and right borders */
+  border-left: none;
+  border-right: none;
+  border-bottom: none;
+  /* Set width of the divider */
+  width: 80px;
+  /* Add rounded ends to the divider */
+  border-radius: 5px;
+  /* Add spacing above and below */
+  margin: 20px auto;
+}
+
+/* Style the description text */
+header p {
+  /* Set font size for description */
+  font-size: 18px;
+  /* Set text color to light gray for visibility on blue gradient */
+  color: #e0e0e0;
+  /* Set a maximum width to match heading width */
+  max-width: 450px;
+  /* Center the paragraph by using auto margins */
+  margin-left: auto;
+  margin-right: auto;
+  /* Add line spacing for readability */
+  line-height: 1.6;
+}
+
+/* Responsive description for smaller devices */
+@media (max-width: 768px) {
+  header p {
+    /* Reduce font size on small devices */
+    font-size: 14px;
+    /* Adjust max-width for smaller screens */
+    max-width: 300px;
+  }
+}
+
+/* Timeline Cards Background Container */
+.cards-background {
+  /* Make container take full width */
+  width: 100%;
+  /* Set box sizing to include padding */
+  box-sizing: border-box;
+  /* Set minimum height to fill space */
+  min-height: 370px;
+  /* Remove default margins */
+  margin: 0;
+  /* Use flexbox to center content */
+  display: flex;
+  /* Center content vertically */
+  align-items: center;
+  /* Center content horizontally */
+  justify-content: center;
+  /* Add background image */
+  background-image: url('img/intel.jpg');
+  /* Make image cover the entire container */
+  background-size: cover;
+  /* Center the background image */
+  background-position: center;
+  /* Ensure image doesn't repeat */
+  background-repeat: no-repeat;
+}
+
+/* Timeline Cards Section Container */
+section {
+  /* Remove horizontal margins since parent flexbox centers it */
+  margin: 0;
+  /* Set max-width to show 4 cards */
+  max-width: 1040px;
+  /* Add horizontal scrolling */
+  overflow-x: auto;
+  /* Hide vertical scrollbar */
+  overflow-y: hidden;
+  /* Add smooth scroll snap to container */
+  scroll-snap-type: x mandatory;
+  /* Add padding for spacing */
+  padding: 40px 20px;
+  /* Set box sizing to include padding */
+  box-sizing: border-box;
+  /* Set width to 100% */
+  width: 100%;
+  /* Display cards in a row using flexbox */
+  display: flex;
+  /* Allow flex direction to be controlled */
+  flex-direction: row;
+  /* Allow wrapping on smaller screens */
+  flex-wrap: wrap;
+  /* Center items */
+  justify-content: center;
+  /* Align items vertically */
+  align-items: center;
+  /* Add gap between cards */
+  gap: 20px;
+}
+
+/* Responsive design - larger screens keep horizontal scroll */
+@media (min-width: 1024px) {
+  section {
+    /* Keep horizontal scroll on large screens */
+    overflow-x: auto;
+    /* Reset wrapping for auto-scroll */
+    flex-wrap: nowrap;
+    /* Align to start for left-aligned scrolling */
+    justify-content: flex-start;
+    /* Remove gap since we use margin-right on cards */
+    gap: 0;
+  }
+}
+
+/* Responsive design - smaller screens stack vertically */
+@media (max-width: 1023px) {
+  section {
+    /* Stack cards vertically */
+    flex-direction: column;
+    /* Remove horizontal scroll */
+    overflow-x: visible;
+    /* Center cards */
+    align-items: center;
+  }
+}
+
+/* Timeline Cards */
+section div {
+  /* Make cards square */
+  width: 200px;
+  height: 200px;
+  /* Add margin between cards */
+  margin-right: 20px;
+  /* Add background for the card */
+  background-color: #f5f5f5;
+  /* Center content inside cards using flexbox */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  /* Add padding for text spacing */
+  padding: 20px;
+  /* Make cards have rounded corners */
+  border-radius: 8px;
+  /* Add a drop shadow */
+  box-shadow: 10px 14px 10px rgba(0, 0, 0, 0.4);
+  /* Add transition for smooth hover effect */
+  transition: all 0.5s ease-in-out;
+  /* Position for overlay text */
+  position: relative;
+  /* Hide overflow for text overlay */
+  overflow: hidden;
+  /* Prevent cards from shrinking */
+  flex-shrink: 0;
+  /* Add scroll snap alignment to each card */
+  scroll-snap-align: start;
+  /* Make cards snap at the end of scrolling */
+  scroll-snap-stop: always;
+}
+
+/* Remove right margin on smaller screens */
+@media (max-width: 1023px) {
+  section div {
+    /* Remove margin-right since gap handles spacing */
+    margin-right: 0;
+  }
+}
+
+/* Hide all text inside cards by default */
+section div h2,
+section div h3,
+section div p {
+  /* Hide text initially */
+  display: none;
+}
+
+/* Show year on the card initially */
+section div h2 {
+  /* Display year */
+  display: block;
+  /* Style the year text */
+  font-size: 32px;
+  color: #0071C5;
+  margin: 0;
+}
+
+/* Hover effect - show all text on hover */
+section div:hover,
+section div:focus {
+  /* Change background on hover/focus */
+  background: linear-gradient(to bottom, #0071C5, #0046C8);
+  /* Add a lift effect */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  /* Remove default focus outline */
+  outline: none;
+}
+
+/* Show all text on hover or focus */
+section div:hover h2,
+section div:hover h3,
+section div:hover p,
+section div:focus h2,
+section div:focus h3,
+section div:focus p {
+  /* Show text on hover/focus */
+  display: block;
+  /* Style text for dark background */
+  color: #ffffff;
+  /* Center text */
+  text-align: center;
+  /* Remove default margins */
+  margin: 0;
+}
+
+/* Style the year text on hover or focus */
+section div:hover h2,
+section div:focus h2 {
+  /* Style year on hover/focus */
+  font-size: 24px;
+  margin-bottom: 5px;
+}
+
+/* Style the title on hover or focus */
+section div:hover h3,
+section div:focus h3 {
+  /* Style title on hover/focus */
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+/* Style the description on hover or focus */
+section div:hover p,
+section div:focus p {
+  /* Style description on hover/focus */
+  font-size: 12px;
+  line-height: 1.4;
+}
+
+/* Style the scroll hint text */
+body > p {
+  /* Center the text */
+  text-align: center;
+  /* Add margin for spacing */
+  margin: 20px 0;
+  /* Style the text */
+  color: #666;
+  font-size: 14px;
+}
+
+/* Footer Section Styling */
+footer {
+  /* Center all content in the footer */
+  text-align: center;
+  /* Add padding for spacing around the content */
+  padding: 15px 20px;
+  /* Blue gradient background (direction switched to left) */
+  background: linear-gradient(to right, #0071C5, #000F28);
+  /* Make footer take full width */
+  width: 100%;
+  /* Set box sizing to include padding */
+  box-sizing: border-box;
+  /* Push footer to bottom of viewport */
+  margin-top: auto;
+  /* Ensure no default margins */
+  margin-left: 0;
+  margin-right: 0;
+  margin-bottom: 0;
+}
+
+/* Responsive footer for smaller devices */
+@media (max-width: 768px) {
+  footer {
+    /* Reduce padding on small devices */
+    padding: 10px 15px;
+  }
+}
+
+/* Style footer paragraph text */
+footer p {
+  /* Set text color to light gray for visibility on blue gradient */
+  color: #e0e0e0;
+  /* Set font size */
+  font-size: 14px;
+  /* Remove default margin */
+  margin: 0;
+}
+
+/* Responsive footer text for smaller devices */
+@media (max-width: 768px) {
+  footer p {
+    /* Reduce font size on small devices */
+    font-size: 12px;
+  }
+}
