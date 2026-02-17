@@ -788,8 +788,17 @@ body > p {
   .footer-nav li + li {
     /* Remove left border on mobile */
     border-left: none;
-    /* Remove extra left padding */
+  }
+
+  /* Reset link items so they don't stretch full width */
+  .footer-nav li {
+    /* Remove equal-width stretch so items shrink to content */
+    flex: none;
+    /* Remove side padding used for horizontal layout */
     padding-left: 0;
+    padding-right: 0;
+    /* Keep text centered */
+    text-align: center;
   }
 }
 
