@@ -25,6 +25,8 @@ body {
 h1, h2, h3, h4, h5, h6 {
   /* Use Inter font for headings */
   font-family: 'Inter', sans-serif;
+  /* Make headings bold */
+  font-weight: 700;
 }
 
 /* Hero Section Styling */
@@ -92,21 +94,36 @@ header h1 {
 }
 
 /* Style the divider between heading and description */
-header hr {
+/* Style the divider between heading and description */
+.header-divider {
+  /* Reset Bootstrap hr defaults */
+  border: none !important;
   /* Set the color of the divider */
-  border-color: #00C7FD;
-  /* Make the divider bold with 5px border */
-  border-top: 5px solid #00C7FD;
-  /* Remove left and right borders */
-  border-left: none;
-  border-right: none;
-  border-bottom: none;
+  border-top: 5px solid #00C7FD !important;
   /* Set width of the divider */
-  width: 80px;
+  width: 80px !important;
   /* Add rounded ends to the divider */
-  border-radius: 5px;
+  border-radius: 5px !important;
   /* Add spacing above and below */
-  margin: 20px auto;
+  margin: 20px auto !important;
+  /* Remove opacity that Bootstrap adds */
+  opacity: 1 !important;
+}
+
+/* Style the newsletter divider to match the hero divider */
+.newsletter-divider {
+  /* Reset Bootstrap hr defaults */
+  border: none !important;
+  /* Set the color of the divider */
+  border-top: 5px solid #00C7FD !important;
+  /* Set width of the divider */
+  width: 80px !important;
+  /* Add rounded ends to the divider */
+  border-radius: 5px !important;
+  /* Add spacing above and below */
+  margin: 15px auto !important;
+  /* Remove opacity that Bootstrap adds */
+  opacity: 1 !important;
 }
 
 /* Style the description text */
@@ -140,8 +157,6 @@ header p {
   width: 100%;
   /* Set box sizing to include padding */
   box-sizing: border-box;
-  /* Set minimum height to fill space */
-  min-height: 370px;
   /* Remove default margins */
   margin: 0;
   /* Use flexbox to center content */
@@ -161,11 +176,13 @@ header p {
 }
 
 /* Timeline Cards Section Container */
-section {
+.timeline-section {
+  /* Apply Source Sans Pro to timeline section */
+  font-family: 'Source Sans Pro', sans-serif;
   /* Remove horizontal margins since parent flexbox centers it */
   margin: 0;
   /* Set max-width to show 4 cards */
-  max-width: 1040px;
+  max-width: 1095px;
   /* Add horizontal scrolling */
   overflow-x: auto;
   /* Hide vertical scrollbar */
@@ -194,7 +211,7 @@ section {
 
 /* Responsive design - larger screens keep horizontal scroll */
 @media (min-width: 1024px) {
-  section {
+  .timeline-section {
     /* Keep horizontal scroll on large screens */
     overflow-x: auto;
     /* Reset wrapping for auto-scroll */
@@ -208,7 +225,7 @@ section {
 
 /* Responsive design - smaller screens stack vertically */
 @media (max-width: 1023px) {
-  section {
+  .timeline-section {
     /* Stack cards vertically */
     flex-direction: column;
     /* Remove horizontal scroll */
@@ -219,7 +236,7 @@ section {
 }
 
 /* Timeline Cards */
-section div {
+.timeline-section > div {
   /* Make cards square */
   width: 200px;
   height: 200px;
@@ -254,81 +271,214 @@ section div {
 
 /* Remove right margin on smaller screens */
 @media (max-width: 1023px) {
-  section div {
+  .timeline-section > div {
     /* Remove margin-right since gap handles spacing */
     margin-right: 0;
   }
 }
 
-/* Hide all text inside cards by default */
-section div h2,
-section div h3,
-section div p {
+/* Hide all text inside timeline cards by default */
+.timeline-section > div h2,
+.timeline-section > div h3,
+.timeline-section > div p {
   /* Hide text initially */
   display: none;
 }
 
-/* Show year on the card initially */
-section div h2 {
+/* Show year on the timeline card initially */
+.timeline-section > div h2 {
+  /* Apply Inter font to headings */
+  font-family: 'Inter', sans-serif;
   /* Display year */
   display: block;
   /* Style the year text */
-  font-size: 32px;
+  font-size: 24px;
   color: #0071C5;
   margin: 0;
 }
 
-/* Hover effect - show all text on hover */
-section div:hover,
-section div:focus {
+/* Card image styling */
+.timeline-section > div .card-img {
+  /* Set consistent size for all card images */
+  width: 100px;
+  height: 100px;
+  /* Make image cover the area without stretching */
+  object-fit: cover;
+  /* Round the image */
+  border-radius: 6px;
+  /* Center the image */
+  display: block;
+  /* Add spacing below image */
+  margin-bottom: 0;
+  /* Full opacity by default */
+  opacity: 1;
+  /* Fade-in animation when reappearing */
+  transition: opacity 0.6s ease-in;
+}
+
+/* Card divider between image and date */
+.timeline-section > div .card-divider {
+  /* Faint line as a subtle separator */
+  border: none;
+  border-top: 1px solid rgba(0, 113, 197, 0.35);
+  /* Set width to match image */
+  width: 60px;
+  /* Add spacing above and below */
+  margin: 8px auto;
+  /* Remove Bootstrap opacity */
+  opacity: 1;
+}
+
+/* Hide image and divider on hover/focus */
+.timeline-section > div:hover .card-img,
+.timeline-section > div:focus .card-img,
+.timeline-section > div:hover .card-divider,
+.timeline-section > div:focus .card-divider {
+  /* Hide image when card is hovered */
+  display: none;
+}
+
+/* Fade-in animation keyframes */
+@keyframes fadeIn {
+  from {
+    /* Start invisible */
+    opacity: 0;
+  }
+  to {
+    /* End fully visible */
+    opacity: 1;
+  }
+}
+
+/* Apply fade-in to images when card is not hovered */
+.timeline-section > div .card-img {
+  /* Play fade-in animation */
+  animation: fadeIn 0.6s ease-in;
+}
+
+/* Hover effect - show all text on timeline card hover */
+.timeline-section > div:hover,
+.timeline-section > div:focus {
   /* Change background on hover/focus */
-  background: linear-gradient(to bottom, #0071C5, #0046C8);
+  background: linear-gradient(to bottom, #0071C5,#00508d);
   /* Add a lift effect */
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
   /* Remove default focus outline */
   outline: none;
 }
 
-/* Show all text on hover or focus */
-section div:hover h2,
-section div:hover h3,
-section div:hover p,
-section div:focus h2,
-section div:focus h3,
-section div:focus p {
+/* Show h3 and p on timeline card hover or focus (hide h2) */
+.timeline-section > div:hover h3,
+.timeline-section > div:hover p,
+.timeline-section > div:focus h3,
+.timeline-section > div:focus p {
   /* Show text on hover/focus */
   display: block;
   /* Style text for dark background */
   color: #ffffff;
   /* Center text */
   text-align: center;
-  /* Remove default margins */
-  margin: 0;
 }
 
-/* Style the year text on hover or focus */
-section div:hover h2,
-section div:focus h2 {
-  /* Style year on hover/focus */
-  font-size: 24px;
-  margin-bottom: 5px;
+/* Hide the year text on timeline card hover or focus */
+.timeline-section > div:hover h2,
+.timeline-section > div:focus h2 {
+  /* Hide year on hover/focus */
+  display: none;
 }
 
-/* Style the title on hover or focus */
-section div:hover h3,
-section div:focus h3 {
+/* Style the title on timeline card hover or focus */
+.timeline-section > div:hover h3,
+.timeline-section > div:focus h3 {
+  /* Apply Inter font to headings */
+  font-family: 'Inter', sans-serif;
   /* Style title on hover/focus */
   font-size: 16px;
   font-weight: 600;
-  margin-bottom: 8px;
+  /* Add margin for spacing */
+  margin: 0 0 8px 0;
 }
 
-/* Style the description on hover or focus */
-section div:hover p,
-section div:focus p {
+/* Style the description on timeline card hover or focus */
+.timeline-section > div:hover p,
+.timeline-section > div:focus p {
   /* Style description on hover/focus */
   font-size: 12px;
-  line-height: 1.4;
+  line-height: 1.2;
+  /* Add margin for proper spacing */
+  margin: 0;
+}
+
+/* Content Section - Three Column Layout */
+.content-section {
+  /* Apply Source Sans Pro to content section body text */
+  font-family: 'Source Sans Pro', sans-serif;
+  /* Remove default margin */
+  margin: 0;
+  /* Add padding for spacing */
+  padding: 60px 20px;
+  /* Set box sizing to include padding */
+  box-sizing: border-box;
+  /* Set width to 100% */
+  width: 100%;
+  /* Set background color for visual separation */
+  background-color: #ffffff;
+}
+
+/* Add vertical spacing between rows when columns stack */
+.content-section .row {
+  /* Match Bootstrap's default column gutter spacing */
+  row-gap: 30px;
+}
+
+/* Style content section headings */
+.content-section h2 {
+  /* Apply Inter font to headings */
+  font-family: 'Inter', sans-serif;
+  /* Add margin below headings */
+  margin-bottom: 15px;
+  /* Set a larger font size for section headings */
+  font-size: 24px;
+  /* Set text color */
+  color: #0071C5;
+}
+
+/* Style content section paragraphs */
+.content-section p {
+  /* Add margin below paragraphs */
+  margin-bottom: 20px;
+  /* Set font size */
+  font-size: 16px;
+  /* Set text color */
+  color: #333333;
+  /* Add line spacing for readability */
+  line-height: 1.6;
+}
+
+/* Style learn more buttons */
+.content-section .btn {
+  /* Add margin top for spacing */
+  margin-top: 10px;
+  /* Set button background to Intel Blue */
+  background-color: #0071C5;
+  /* Set button border to match background */
+  border-color: #0071C5;
+}
+
+/* Style learn more buttons on hover */
+.content-section .btn:hover {
+  /* Keep Intel Blue on hover */
+  background-color: #0062ad;
+  /* Keep border matching */
+  border-color: #0062ad;
+}
+
+/* Responsive content section */
+@media (max-width: 991px) {
+  .content-section {
+    /* Reduce padding on smaller screens */
+    padding: 40px 15px;
+  }
 }
 
 /* Style the scroll hint text */
@@ -342,48 +492,305 @@ body > p {
   font-size: 14px;
 }
 
-/* Footer Section Styling */
-footer {
-  /* Center all content in the footer */
-  text-align: center;
-  /* Add padding for spacing around the content */
-  padding: 15px 20px;
-  /* Blue gradient background (direction switched to left) */
-  background: linear-gradient(to right, #0071C5, #000F28);
-  /* Make footer take full width */
-  width: 100%;
+/* Newsletter Section Styling */
+.newsletter-section {
+  /* Remove default margin */
+  margin: 0;
+  /* Add padding for spacing */
+  padding: 60px 20px;
   /* Set box sizing to include padding */
   box-sizing: border-box;
-  /* Push footer to bottom of viewport */
-  margin-top: auto;
-  /* Ensure no default margins */
-  margin-left: 0;
-  margin-right: 0;
-  margin-bottom: 0;
+  /* Set width to 100% */
+  width: 100%;
+  /* Radial gradient background with dark center */
+  background: radial-gradient(circle at center, #000F28, #0071C5);
 }
 
-/* Responsive footer for smaller devices */
+/* Responsive newsletter section for smaller devices */
 @media (max-width: 768px) {
-  footer {
+  .newsletter-section {
     /* Reduce padding on small devices */
-    padding: 10px 15px;
+    padding: 40px 15px;
   }
 }
 
-/* Style footer paragraph text */
-footer p {
-  /* Set text color to light gray for visibility on blue gradient */
+/* Newsletter section heading */
+.newsletter-section h2 {
+  /* Center the heading */
+  text-align: center;
+  /* Add margin below heading */
+  margin-bottom: 10px;
+  /* Set heading color to white for visibility on gradient */
+  color: #ffffff;
+}
+
+/* Newsletter section subtitle */
+.newsletter-section .subtitle {
+  /* Center the subtitle */
+  text-align: center;
+  /* Add margin below subtitle */
+  margin-bottom: 30px;
+  /* Set text color to light gray for visibility on gradient */
   color: #e0e0e0;
+  /* Set font size */
+  font-size: 18px;
+}
+
+/* Newsletter form styling */
+.newsletter-section form {
+  /* Add margin top for spacing */
+  margin-top: 20px;
+}
+
+/* Style form labels for visibility on dark background */
+.newsletter-section .form-label {
+  /* Set label color to white */
+  color: #ffffff;
+}
+
+/* Style form check labels */
+.newsletter-section .form-check-label {
+  /* Set label color to light gray */
+  color: #e0e0e0;
+}
+
+/* Style newsletter subscribe button */
+.newsletter-section .btn-primary {
+  /* Set button background to light blue */
+  background-color: #00C7FD;
+  /* Set button border to match background */
+  border-color: #00C7FD;
+  /* Set button text color to dark navy */
+  color: #000F28;
+}
+
+/* Style newsletter button on hover */
+.newsletter-section .btn-primary:hover {
+  /* Darken button on hover */
+  background-color: #00a8d4;
+  /* Update border on hover */
+  border-color: #00a8d4;
+}
+
+/* Newsletter Modal Styling */
+.newsletter-modal {
+  /* Inverted gradient: light center, dark outside */
+  background: radial-gradient(circle at center, #0071C5, #000F28);
+  /* Remove default white border */
+  border: none;
+  /* Round the corners */
+  border-radius: 12px;
+  /* Add padding inside the modal */
+  padding: 40px 30px;
+  /* Position relative for close button */
+  position: relative;
+}
+
+/* Modal close button positioning */
+.newsletter-modal .btn-close {
+  /* Position in the top right corner */
+  position: absolute;
+  top: 15px;
+  right: 15px;
+}
+
+/* Modal heading */
+.newsletter-modal h2 {
+  /* Center the heading */
+  text-align: center;
+  /* Add margin below heading */
+  margin-bottom: 10px;
+  /* White text for visibility on gradient */
+  color: #ffffff;
+}
+
+/* Modal subtitle */
+.newsletter-modal .subtitle {
+  /* Center the subtitle */
+  text-align: center;
+  /* Add margin below subtitle */
+  margin-bottom: 25px;
+  /* Light gray text for visibility on gradient */
+  color: #e0e0e0;
+  /* Set font size */
+  font-size: 16px;
+}
+
+/* Modal form labels */
+.newsletter-modal .form-label {
+  /* White labels for visibility on dark background */
+  color: #ffffff;
+}
+
+/* Modal form check labels */
+.newsletter-modal .form-check-label {
+  /* Light gray for readability */
+  color: #e0e0e0;
+}
+
+/* Modal subscribe button */
+.newsletter-modal .btn-primary {
+  /* Match the inline section's cyan button */
+  background-color: #00C7FD;
+  /* Match border color */
+  border-color: #00C7FD;
+  /* Set button text color to dark navy */
+  color: #000F28;
+}
+
+/* Modal subscribe button hover */
+.newsletter-modal .btn-primary:hover {
+  /* Darken on hover */
+  background-color: #00a8d4;
+  /* Match border on hover */
+  border-color: #00a8d4;
+}
+
+/* Timeline Section Divider */
+.timeline-divider {
+  /* Same gradient as the hero section */
+  background: linear-gradient(to right, #0071C5, #000F28);
+  /* Slim padding for a thin bar */
+  padding: 15px 20px;
+  /* Center text inside */
+  text-align: center;
+  /* Full width */
+  width: 100%;
+  /* Include padding in width */
+  box-sizing: border-box;
+}
+
+/* Timeline divider paragraph text */
+.timeline-divider p {
+  /* White text for visibility on gradient */
+  color: #ffffff;
+  /* Use the body paragraph font (Source Sans Pro) */
+  font-family: 'Source Sans Pro', sans-serif;
+  /* Normal weight for paragraph style */
+  font-weight: 400;
   /* Set font size */
   font-size: 14px;
   /* Remove default margin */
   margin: 0;
 }
 
-/* Responsive footer text for smaller devices */
-@media (max-width: 768px) {
-  footer p {
-    /* Reduce font size on small devices */
-    font-size: 12px;
+/* On desktop, make header + timeline + divider fill the viewport */
+@media (min-width: 1024px) {
+  .cards-background {
+    /* Fill remaining viewport space after header and divider */
+    /* 100vh minus approximate header height minus divider height */
+    min-height: 370px;
   }
 }
+
+/* Footer Section Styling */
+.page-footer {
+  /* Add more padding for a substantial feel */
+  padding: 35px 20px;
+  /* Dark navy background to match the site theme */
+  background-color: #000F28;
+  /* Set width to 100% */
+  width: 100%;
+  /* Set box sizing to include padding */
+  box-sizing: border-box;
+  /* Remove border for seamless look under gradient */
+  border-top: none;
+  /* Margin top pushes footer down */
+  margin-top: auto;
+}
+
+/* Footer navigation styling */
+.footer-nav ul {
+  /* Remove default list styles */
+  list-style: none;
+  /* Remove padding */
+  padding: 0;
+  /* Remove margin */
+  margin: 0 auto;
+  /* Display links in a row */
+  display: flex;
+  /* Center items */
+  justify-content: center;
+  /* Wrap on smaller screens */
+  flex-wrap: wrap;
+  /* Add margin below nav */
+  margin-bottom: 20px;
+  /* Limit width so links sit closer together */
+  max-width: 450px;
+}
+
+/* Add vertical dividers between footer nav links */
+.footer-nav li + li {
+  /* Add a left border as a vertical divider */
+  border-left: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+/* Space each nav item evenly */
+.footer-nav li {
+  /* Give each item equal width */
+  flex: 1;
+  /* Center the link text within each item */
+  text-align: center;
+  /* Equal padding on both sides of each link */
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+/* Footer navigation links */
+.footer-nav a {
+  /* Light blue for visibility on dark background */
+  color: #00C7FD;
+  /* Remove default underline */
+  text-decoration: none;
+  /* Set font size */
+  font-size: 14px;
+  /* Smooth transition for hover */
+  transition: color 0.3s ease;
+}
+
+/* Footer navigation links hover */
+.footer-nav a:hover {
+  /* Brighten on hover */
+  color: #ffffff;
+  /* Add underline on hover */
+  text-decoration: underline;
+}
+
+/* Footer copyright styling */
+.footer-copyright p {
+  /* Center the text */
+  text-align: center;
+  /* Light gray text for subtle visibility on dark background */
+  color: #a0a0a0;
+  /* Set font size */
+  font-size: 13px;
+  /* Remove default margin */
+  margin: 0;
+}
+
+/* Responsive footer for smaller devices */
+@media (max-width: 768px) {
+  .page-footer {
+    /* Reduce padding on small devices */
+    padding: 25px 15px;
+  }
+
+  /* Stack navigation vertically on mobile */
+  .footer-nav ul {
+    /* Stack links vertically */
+    flex-direction: column;
+    /* Reduce gap on mobile */
+    gap: 15px;
+    /* Center alignment */
+    align-items: center;
+  }
+
+  /* Remove vertical dividers when stacked on mobile */
+  .footer-nav li + li {
+    /* Remove left border on mobile */
+    border-left: none;
+    /* Remove extra left padding */
+    padding-left: 0;
+  }
+}
+
